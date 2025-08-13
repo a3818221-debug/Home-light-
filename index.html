@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>स्मार्ट होम कंट्रोल</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+    header { background: #2c3e50; color: white; padding: 1rem; text-align: center; font-size: 1.5rem; }
+    .room { background: white; margin: 1rem; padding: 1rem; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .device { display: flex; justify-content: space-between; align-items: center; margin: 0.5rem 0; }
+    button { padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer; }
+    .on { background: #27ae60; color: white; }
+    .off { background: #c0392b; color: white; }
+  </style>
+</head>
+<body>
+  <header>स्मार्ट होम कंट्रोल पैनल</header>  <div class="room">
+    <h2>बैडरूम</h2>
+    <div class="device">
+      <span>लाइट</span>
+      <div>
+        <button class="on" onclick="toggle('bedroom_light', true)">चालू</button>
+        <button class="off" onclick="toggle('bedroom_light', false)">बंद</button>
+      </div>
+    </div>
+    <div class="device">
+      <span>पंखा</span>
+      <div>
+        <button class="on" onclick="toggle('bedroom_fan', true)">चालू</button>
+        <button class="off" onclick="toggle('bedroom_fan', false)">बंद</button>
+      </div>
+    </div>
+  </div>  <div class="room">
+    <h2>बैठक कक्ष</h2>
+    <div class="device">
+      <span>लाइट</span>
+      <div>
+        <button class="on" onclick="toggle('living_light', true)">चालू</button>
+        <button class="off" onclick="toggle('living_light', false)">बंद</button>
+      </div>
+    </div>
+    <div class="device">
+      <span>एसी</span>
+      <div>
+        <button class="on" onclick="toggle('living_ac', true)">चालू</button>
+        <button class="off" onclick="toggle('living_ac', false)">बंद</button>
+      </div>
+    </div>
+  </div>  <div class="room">
+    <h2>रसोई</h2>
+    <div class="device">
+      <span>लाइट</span>
+      <div>
+        <button class="on" onclick="toggle('kitchen_light', true)">चालू</button>
+        <button class="off" onclick="toggle('kitchen_light', false)">बंद</button>
+      </div>
+    </div>
+    <div class="device">
+      <span>एग्जॉस्ट फैन</span>
+      <div>
+        <button class="on" onclick="toggle('kitchen_fan', true)">चालू</button>
+        <button class="off" onclick="toggle('kitchen_fan', false)">बंद</button>
+      </div>
+    </div>
+  </div>  <script>
+    function toggle(device, state) {
+      alert(device + ' को ' + (state ? 'चालू' : 'बंद') + ' किया गया');
+      // यहां पर Arduino/ESP8266 API कॉल जोड़ें
+    }
+  </script></body>
+</html>
