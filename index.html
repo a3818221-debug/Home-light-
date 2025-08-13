@@ -1,71 +1,396 @@
 <!DOCTYPE html><html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>स्मार्ट होम कंट्रोल</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Home • Premium VIP UI (Hindi + English)</title>
+  <meta name="theme-color" content="#0f1016">
   <style>
-    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
-    header { background: #2c3e50; color: white; padding: 1rem; text-align: center; font-size: 1.5rem; }
-    .room { background: white; margin: 1rem; padding: 1rem; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .device { display: flex; justify-content: space-between; align-items: center; margin: 0.5rem 0; }
-    button { padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer; }
-    .on { background: #27ae60; color: white; }
-    .off { background: #c0392b; color: white; }
+    /* ---------- Premium Glass + Gradient Theme ---------- */
+    :root{
+      --bg:#0f1016;           /* page bg */
+      --glass:#141824cc;      /* card glass */
+      --glass-2:#0c0f14b3;    /* header glass */
+      --stroke:#ffffff14;     /* borders */
+      --text:#eef1f7;         /* main text */
+      --muted:#9aa3b2;        /* secondary text */
+      --accent:#7c5cff;       /* primary */
+      --accent-2:#00e0a4;     /* success */
+      --danger:#ff5c7a;       /* danger */
+      --warm:#ffb84d;         /* warm yellow */
+      --radius:22px;
+      --shadow:0 10px 40px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(1200px 800px at 100% -10%, #241a49 0%, transparent 60%),
+        radial-gradient(800px 600px at -10% 120%, #07242f 0%, transparent 60%),
+        var(--bg);
+    }
+    a{color:var(--accent)}
+    .container{max-width:1180px;margin:0 auto;padding:18px}/* ---------- Header ---------- */
+.header{position:sticky; top:0; z-index:10; backdrop-filter:blur(8px);}
+.bar{background:linear-gradient(180deg, var(--glass-2), transparent); border:1px solid var(--stroke); border-radius:20px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px; box-shadow:var(--shadow)}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),#3b26b7);box-shadow:0 12px 28px rgba(124,92,255,.35)}
+.title{font-weight:800;letter-spacing:.3px}
+.subtitle{color:var(--muted);font-size:12px}
+.clock{font-variant-numeric:tabular-nums; color:var(--muted)}
+
+/* ---------- Layout ---------- */
+.grid{display:grid; gap:16px}
+.cols{grid-template-columns:2fr 1fr}
+@media(max-width:980px){.cols{grid-template-columns:1fr}}
+
+/* ---------- Card ---------- */
+.card{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid var(--stroke); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
+.card-head{display:flex; align-items:center; justify-content:space-between; padding:16px; gap:12px; background:linear-gradient(180deg, rgba(255,255,255,.04), transparent)}
+.card-body{padding:16px}
+.muted{color:var(--muted)}
+
+/* ---------- Buttons & Chips ---------- */
+.btn{cursor:pointer; border:none; border-radius:14px; padding:10px 14px; background:#1c2331; color:#fff; font-weight:700; letter-spacing:.2px; transition:transform .12s ease, filter .12s ease; display:inline-flex; align-items:center; gap:10px}
+.btn:hover{transform:translateY(-1px); filter:brightness(1.05)}
+.btn:active{transform:translateY(0)}
+.btn.primary{background:linear-gradient(135deg,var(--accent),#5936ff)}
+.btn.success{background:linear-gradient(135deg,#00e0a4,#08b7ff)}
+.btn.danger{background:linear-gradient(135deg,#ff5277,#e43456)}
+.btn.ghost{background:transparent; border:1px solid var(--stroke)}
+
+.chip{display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.06); border:1px solid var(--stroke); padding:6px 10px; border-radius:999px; font-size:12px}
+
+/* ---------- Switch ---------- */
+.switch{width:60px;height:34px;border-radius:999px;background:#2a3042;position:relative;display:inline-block;vertical-align:middle;box-shadow:inset 0 0 0 2px rgba(255,255,255,.05)}
+.switch input{display:none}
+.switch .knob{position:absolute;top:3px;left:3px;width:28px;height:28px;border-radius:999px;background:#fff;transition:all .2s cubic-bezier(.4,0,.2,1)}
+.switch.on{background:linear-gradient(135deg,var(--accent-2),#0fc3ff)}
+.switch.on .knob{left:29px}
+
+/* ---------- Fields ---------- */
+.field{display:grid; gap:8px}
+.field label{font-size:12px; color:var(--muted)}
+.field input, .field select{width:100%; padding:11px 12px; border-radius:12px; background:#0f1320; border:1px solid var(--stroke); color:#fff; outline:none}
+.field input:focus, .field select:focus{box-shadow:0 0 0 4px rgba(124,92,255,.35); border-color:transparent}
+
+/* ---------- Rooms ---------- */
+.room{
+  background: center/cover no-repeat; position:relative;
+}
+.room::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.6));}
+.room > *{position:relative}
+
+.devices{display:grid; grid-template-columns:repeat(2, 1fr); gap:12px}
+@media(max-width:680px){.devices{grid-template-columns:1fr}}
+
+.device-card{background:var(--glass); border:1px solid var(--stroke); border-radius:18px; padding:12px; display:grid; gap:10px}
+.device-top{display:flex; align-items:center; justify-content:space-between; gap:8px}
+.dev-label{display:flex; align-items:center; gap:10px; font-weight:700}
+.dot{width:10px;height:10px;border-radius:999px;box-shadow:0 0 0 4px rgba(255,255,255,.06)}
+.on{background:var(--accent-2)}
+.off{background:#ff6e6e}
+
+.slider{appearance:none;width:100%;height:6px;border-radius:999px;background:#243149;outline:none}
+.slider::-webkit-slider-thumb{appearance:none;width:20px;height:20px;border-radius:999px;background:linear-gradient(135deg,#fafafa,#c7d0ff);border:2px solid #313b61;cursor:pointer}
+
+.log{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;background:#0b0e16;border-radius:14px;padding:12px;height:240px;overflow:auto;border:1px solid var(--stroke)}
+
+.footer{margin-top:16px;color:var(--muted);font-size:12px;text-align:center}
+
+/* Small icon style */
+.icon{width:18px;height:18px}
+
   </style>
 </head>
 <body>
-  <header>स्मार्ट होम कंट्रोल पैनल</header>  <div class="room">
-    <h2>बैडरूम</h2>
-    <div class="device">
-      <span>लाइट</span>
-      <div>
-        <button class="on" onclick="toggle('bedroom_light', true)">चालू</button>
-        <button class="off" onclick="toggle('bedroom_light', false)">बंद</button>
+  <div class="container header">
+    <div class="bar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🔆</div>
+        <div>
+          <div class="title">Smart Home • स्मार्ट होम</div>
+          <div class="subtitle">Premium VIP Control Dashboard • प्रीमियम कंट्रोल डैशबोर्ड</div>
+        </div>
+      </div>
+      <div class="grid" style="grid-auto-flow:column;gap:12px;align-items:center">
+        <span class="chip"><span id="chipDot" class="dot off"></span><span id="chipText">Offline • ऑफ़लाइन</span></span>
+        <span class="clock" id="clock">--:--</span>
       </div>
     </div>
-    <div class="device">
-      <span>पंखा</span>
+  </div>  <div class="container grid cols" style="margin-top:14px"><!-- LEFT: Rooms & Scenes -->
+<div class="grid">
+
+  <!-- Controller / Settings -->
+  <div class="card">
+    <div class="card-head">
       <div>
-        <button class="on" onclick="toggle('bedroom_fan', true)">चालू</button>
-        <button class="off" onclick="toggle('bedroom_fan', false)">बंद</button>
+        <div style="font-weight:800">Controller • कंट्रोलर</div>
+        <div class="muted" style="font-size:12px">Set Device IP & Endpoints • डिवाइस IP और एन्डपॉइंट सेट करें</div>
+      </div>
+      <div class="grid" style="grid-auto-flow:column; gap:8px">
+        <button class="btn ghost" id="btnRefresh">Refresh • रिफ्रेश</button>
+        <button class="btn" id="btnWs">Connect WS • वेब-सॉकेट</button>
       </div>
     </div>
-  </div>  <div class="room">
-    <h2>बैठक कक्ष</h2>
-    <div class="device">
-      <span>लाइट</span>
-      <div>
-        <button class="on" onclick="toggle('living_light', true)">चालू</button>
-        <button class="off" onclick="toggle('living_light', false)">बंद</button>
+    <div class="card-body">
+      <div class="grid" style="grid-template-columns:1fr 1fr; gap:12px">
+        <div class="field"><label>Device IP (उदाहरण: 192.168.1.50)</label><input id="ip" placeholder="192.168.1.50" /></div>
+        <div class="field"><label>Auth Token (वैकल्पिक)</label><input id="token" placeholder="Bearer token" /></div>
+        <div class="field">
+          <label>Status Endpoint • स्थिति</label>
+          <select id="statusPref">
+            <option value="/api/status">/api/status</option>
+            <option value="/status">/status</option>
+            <option value="/relay/state">/relay/state</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Set/Toggle Endpoint • सेट/टॉगल</label>
+          <select id="setPref">
+            <option value="/api/relay">POST /api/relay</option>
+            <option value="/relay">POST /relay</option>
+            <option value="/gpio">POST /gpio</option>
+            <option value="/api/toggle">GET /api/toggle</option>
+            <option value="/toggle">GET /toggle</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top:12px; display:flex; gap:10px; align-items:center; flex-wrap:wrap">
+        <span class="chip">CORS: enable <code>Access-Control-Allow-Origin</code> on device • या same-origin से सर्व करें</span>
+        <button class="btn primary" id="btnSave">Save • सेव</button>
       </div>
     </div>
-    <div class="device">
-      <span>एसी</span>
-      <div>
-        <button class="on" onclick="toggle('living_ac', true)">चालू</button>
-        <button class="off" onclick="toggle('living_ac', false)">बंद</button>
+  </div>
+
+  <!-- ROOMS -->
+  <div id="rooms" class="grid" style="gap:16px"></div>
+
+  <!-- Scenes -->
+  <div class="card">
+    <div class="card-head"><b>Scenes • सीन</b><span class="muted" style="font-size:12px">Quick actions • त्वरित एक्शन</span></div>
+    <div class="card-body">
+      <div class="grid" style="grid-template-columns:repeat(3,1fr); gap:12px">
+        <button class="btn success" data-scene="relax">Relax (आराम)</button>
+        <button class="btn" data-scene="focus">Focus (फ़ोकस)</button>
+        <button class="btn danger" data-scene="night">Night (नाइट)</button>
       </div>
     </div>
-  </div>  <div class="room">
-    <h2>रसोई</h2>
-    <div class="device">
-      <span>लाइट</span>
+  </div>
+
+  <!-- Activity Log -->
+  <div class="card">
+    <div class="card-head"><b>Activity • गतिविधि</b><span class="muted" style="font-size:12px">Live log • लाइव लॉग</span></div>
+    <div class="card-body"><div id="log" class="log"></div></div>
+  </div>
+
+  <div class="footer">Built for ESP8266/ESP32 HTTP APIs • Single‑file static UI • Works on GitHub Pages • हिंदी + English</div>
+</div>
+
+<!-- RIGHT: Today / Tips -->
+<div class="grid">
+  <div class="card room" style="min-height:220px; background-image:url('https://images.unsplash.com/photo-1505691723518-36a5ac3b2d95?q=80&w=1600&auto=format&fit=crop');">
+    <div class="card-head" style="background:transparent">
       <div>
-        <button class="on" onclick="toggle('kitchen_light', true)">चालू</button>
-        <button class="off" onclick="toggle('kitchen_light', false)">बंद</button>
+        <div style="font-weight:800">Home Status • घर की स्थिति</div>
+        <div class="muted" style="font-size:12px">Preview • प्रिव्यू</div>
+      </div>
+      <span class="chip"><span id="homeDot" class="dot off"></span> <span id="homeStatus">Offline • ऑफ़लाइन</span></span>
+    </div>
+    <div class="card-body" style="backdrop-filter:blur(2px)">
+      <div class="grid" style="grid-template-columns:1fr 1fr; gap:10px">
+        <div class="device-card"><div class="dev-label">💡 Light (लाइट)</div><div class="muted">—</div></div>
+        <div class="device-card"><div class="dev-label">❄️ AC (एसी)</div><div class="muted">—</div></div>
       </div>
     </div>
-    <div class="device">
-      <span>एग्जॉस्ट फैन</span>
-      <div>
-        <button class="on" onclick="toggle('kitchen_fan', true)">चालू</button>
-        <button class="off" onclick="toggle('kitchen_fan', false)">बंद</button>
-      </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><b>Tips • सुझाव</b></div>
+    <div class="card-body" style="font-size:14px" class="muted">
+      Use the IP of your ESP device. If you get CORS errors, serve from the device or enable headers. • अपने ESP डिवाइस का IP डालें। CORS आए तो डिवाइस पर हेडर सक्षम करें।
     </div>
+  </div>
+</div>
+
   </div>  <script>
-    function toggle(device, state) {
-      alert(device + ' को ' + (state ? 'चालू' : 'बंद') + ' किया गया');
-      // यहां पर Arduino/ESP8266 API कॉल जोड़ें
+  (function(){
+    const $ = (s, el=document)=> el.querySelector(s);
+    const $$ = (s, el=document)=> Array.from(el.querySelectorAll(s));
+
+    // ---------- Live Clock ----------
+    const clock = $('#clock');
+    function tick(){ const d=new Date(); clock.textContent=d.toLocaleTimeString(); requestAnimationFrame(()=>{}); }
+    setInterval(tick,1000); tick();
+
+    // ---------- Settings ----------
+    const STORAGE='smartui.v2';
+    const settings = loadSettings();
+    const ipInput=$('#ip'), tokenInput=$('#token'), statusPref=$('#statusPref'), setPref=$('#setPref');
+    applySettings();
+
+    $('#btnSave').addEventListener('click', ()=>{ saveSettings(); toast('Settings saved • सेटिंग सेव'); });
+    $('#btnRefresh').addEventListener('click', refreshAll);
+    $('#btnWs').addEventListener('click', connectWs);
+
+    // ---------- Rooms & Devices (with images + icons) ----------
+    const roomsData=[
+      { id:'living',  name:'Living Room (बैठक कक्ष)', img:'https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1600&auto=format&fit=crop', devices:[
+        { id:'light-1', label:'Light (लाइट)',  type:'light', supports:{power:true, dim:true}},
+        { id:'fan-1',   label:'Fan (पंखा)',    type:'fan',   supports:{power:true, speed:true}},
+        { id:'tv-1',    label:'TV (टीवी)',     type:'tv',    supports:{power:true}},
+      ]},
+      { id:'bed',     name:'Bedroom (बैडरूम)', img:'https://images.unsplash.com/photo-1505691723518-36a5ac3b2d95?q=80&w=1600&auto=format&fit=crop', devices:[
+        { id:'light-2', label:'Bed Light (बेड लाइट)', type:'light', supports:{power:true, dim:true}},
+        { id:'ac-1',    label:'AC (एसी)',            type:'ac',    supports:{power:true, temp:true, mode:true}},
+        { id:'cur-1',   label:'Curtains (परदे)',     type:'curtain',supports:{openClose:true}},
+      ]},
+      { id:'kitchen', name:'Kitchen (रसोई)',   img:'https://images.unsplash.com/photo-1541542684-4a6319a6f2d1?q=80&w=1600&auto=format&fit=crop', devices:[
+        { id:'light-3', label:'Light (लाइट)', type:'light', supports:{power:true}},
+        { id:'fan-2',   label:'Exhaust Fan (एग्जॉस्ट)', type:'fan', supports:{power:true, speed:true}},
+        { id:'geyser-1',label:'Geyser (गीज़र)', type:'geyser', supports:{power:true, temp:true}},
+      ]},
+      { id:'study',   name:'Study (स्टडी रूम)', img:'https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1600&auto=format&fit=crop', devices:[
+        { id:'light-4', label:'Desk Lamp (डेस्क लैम्प)', type:'light', supports:{power:true, dim:true}},
+        { id:'music-1', label:'Music (म्यूजिक)', type:'audio', supports:{power:true, volume:true}},
+      ]}
+    ];
+
+    const roomsEl = $('#rooms');
+    roomsData.forEach(r=> roomsEl.appendChild(roomCard(r)));
+
+    // ---------- Scenes ----------
+    $$('[data-scene]').forEach(b=> b.addEventListener('click', ()=> runScene(b.dataset.scene)));
+
+    // ---------- Log ----------
+    const logEl = $('#log');
+    function toast(msg){ const t=new Date().toLocaleTimeString(); const div=document.createElement('div'); div.textContent=`[${t}] ${msg}`; logEl.prepend(div); }
+
+    // ---------- Online Status ----------
+    function setOnline(ok){
+      $('#chipDot').className='dot '+(ok?'on':'off');
+      $('#homeDot').className='dot '+(ok?'on':'off');
+      $('#chipText').textContent = ok? 'Online • ऑनलाइन' : 'Offline • ऑफ़लाइन';
+      $('#homeStatus').textContent= $('#chipText').textContent;
     }
+
+    // ---------- Networking Helpers ----------
+    function baseUrl(){ const ip=(ipInput.value||'').trim(); if(!ip){ return null; } return `http://${ip}`; }
+    async function request(path, {method='GET', body}={}){
+      const base = baseUrl(); if(!base){ toast('Set IP first • पहले IP सेट करें'); throw new Error('no ip'); }
+      const headers={'Content-Type':'application/json'}; const tok=(tokenInput.value||'').trim(); if(tok) headers['Authorization']='Bearer '+tok;
+      const res = await fetch(base+path, {method, headers, body: body?JSON.stringify(body):undefined});
+      if(!res.ok) throw new Error(res.status+' '+res.statusText);
+      const ct=res.headers.get('content-type')||''; return ct.includes('application/json')? res.json() : res.text();
+    }
+
+    async function getStatus(){
+      try{
+        const data = await request(statusPref.value);
+        setOnline(true); toast('Status OK • स्टेटस मिला');
+        return data;
+      }catch(e){ setOnline(false); toast('Status error • स्टेटस त्रुटि: '+e.message); return null; }
+    }
+
+    async function sendPower(on){
+      try{
+        if(setPref.value.startsWith('/api/toggle') || setPref.value.startsWith('/toggle')){
+          await request(setPref.value);
+        } else {
+          await request(setPref.value, {method:'POST', body:{state: on?'on':'off', on: !!on, relay: on?1:0}});
+        }
+        setOnline(true); toast('Power '+(on?'ON • ऑन':'OFF • ऑफ़')); 
+      }catch(e){ setOnline(false); toast('Power error • त्रुटि: '+e.message); }
+    }
+
+    // Extra endpoints (optional; device may ignore if unsupported)
+    function tryPost(path, body, okMsg, failMsg){
+      return request(path, {method:'POST', body}).then(()=> toast(okMsg)).catch(()=> toast(failMsg));
+    }
+
+    const api = {
+      dim: (v)=> tryPost('/api/brightness', {value:v}, 'Brightness '+v+'% • ब्राइटनेस', 'Brightness not supported • समर्थित नहीं'),
+      speed: (v)=> tryPost('/api/fan', {speed:v}, 'Fan '+v+'% • फैन स्पीड', 'Fan not supported • समर्थित नहीं'),
+      acMode: (m)=> tryPost('/api/ac', {mode:m}, 'AC mode '+m+' • एसी मोड', 'AC mode not supported'),
+      acTemp: (t)=> tryPost('/api/ac', {temp:t}, 'AC '+t+'°C • एसी', 'AC temp not supported'),
+      volume: (v)=> tryPost('/api/audio', {volume:v}, 'Volume '+v+'% • वॉल्यूम', 'Audio not supported'),
+      curtains: (cmd)=> tryPost('/api/curtains', {action:cmd}, 'Curtains '+cmd+' • परदे', 'Curtains not supported'),
+      geyserTemp: (t)=> tryPost('/api/geyser', {temp:t}, 'Geyser '+t+'°C • गीज़र', 'Geyser temp not supported'),
+    };
+
+    // ---------- Room Cards ----------
+    function roomCard(room){
+      const card=document.createElement('div');
+      card.className='card room';
+      card.style.minHeight='260px';
+      card.style.backgroundImage=`url('${room.img}')`;
+      card.innerHTML=`
+        <div class="card-head" style="background:transparent">
+          <div>
+            <div style="font-weight:800">${room.name}</div>
+            <div class="muted" style="font-size:12px">${room.devices.length} devices • डिवाइस</div>
+          </div>
+          <div class="chip"><span class="dot off"></span> <span>Idle • आइडल</span></div>
+        </div>
+        <div class="card-body">
+          <div class="devices"></div>
+        </div>`;
+
+      const devicesWrap = card.querySelector('.devices');
+      room.devices.forEach(d=> devicesWrap.appendChild(deviceCard(d)));
+      return card;
+    }
+
+    function deviceCard(d){
+      const el=document.createElement('div'); el.className='device-card';
+      el.innerHTML=`
+        <div class="device-top">
+          <div class="dev-label">${icon(d.type)} ${d.label}</div>
+          <label class="switch"><input type="checkbox"><span class="knob"></span></label>
+        </div>
+        <div class="controls grid" style="gap:8px"></div>`;
+
+      const sw=el.querySelector('input');
+      sw.addEventListener('change', ()=>{ el.querySelector('.switch').classList.toggle('on', sw.checked); sendPower(sw.checked); });
+
+      const c = el.querySelector('.controls');
+      if(d.supports.dim){ c.appendChild(row('Brightness (ब्राइटनेस)', slider(5,100,100, v=> api.dim(v)))); }
+      if(d.supports.speed){ c.appendChild(row('Fan Speed (फैन स्पीड)', slider(0,100,50, v=> api.speed(v)))); }
+      if(d.supports.mode){ c.appendChild(row('AC Mode (एसी मोड)', select({cool:'Cool', dry:'Dry', fan:'Fan', auto:'Auto'}, v=> api.acMode(v)))); }
+      if(d.supports.temp && d.type==='ac'){ c.appendChild(row('Temperature (तापमान)', number(16,30,24, v=> api.acTemp(v), '°C'))); }
+      if(d.supports.temp && d.type==='geyser'){ c.appendChild(row('Temp (तापमान)', number(35,75,45, v=> api.geyserTemp(v), '°C'))); }
+      if(d.supports.openClose){ c.appendChild(row('Curtains (परदे)', buttons([
+        ['Open (खोलें)','open'], ['Close (बंद)','close'], ['Stop (रोकें)','stop']
+      ], cmd=> api.curtains(cmd)))); }
+      if(d.supports.volume){ c.appendChild(row('Volume (वॉल्यूम)', slider(0,100,40, v=> api.volume(v)))); }
+      return el;
+    }
+
+    // ---------- Control builders ----------
+    function row(label, node){ const wrap=document.createElement('div'); wrap.className='grid'; wrap.innerHTML=`<div class="field"><label>${label}</label></div>`; wrap.querySelector('.field').appendChild(node); return wrap; }
+    function slider(min,max,val,on){ const el=document.createElement('input'); el.type='range'; el.className='slider'; el.min=min; el.max=max; el.value=val; el.addEventListener('input', e=>on(Number(e.target.value))); return el; }
+    function select(map,on){ const el=document.createElement('select'); for(const k in map){ const o=document.createElement('option'); o.value=k; o.textContent=map[k]; el.appendChild(o);} el.addEventListener('change', e=>on(e.target.value)); return el; }
+    function number(min,max,val,on,suf){ const wrap=document.createElement('div'); wrap.style.display='flex'; wrap.style.gap='8px'; const el=document.createElement('input'); el.type='number'; el.min=min; el.max=max; el.value=val; el.style.cssText='background:#0f1320;border:1px solid var(--stroke);color:#fff;border-radius:12px;padding:10px;flex:1;'; el.addEventListener('change', e=>on(Number(e.target.value))); const t=document.createElement('div'); t.className='chip'; t.textContent=suf||''; wrap.append(el,t); return wrap; }
+    function buttons(arr,on){ const wrap=document.createElement('div'); wrap.style.display='flex'; wrap.style.flexWrap='wrap'; wrap.style.gap='8px'; arr.forEach(([label,val])=>{ const b=document.createElement('button'); b.className='btn ghost'; b.textContent=label; b.addEventListener('click', ()=>on(val)); wrap.appendChild(b); }); return wrap; }
+
+    // ---------- Icons (inline emoji/SVG mix for zero deps) ----------
+    function icon(type){
+      const map={ light:'💡', fan:'🌀', ac:'❄️', tv:'📺', curtain:'🪟', audio:'🎵', geyser:'🔥' };
+      return `<span class="icon" aria-hidden="true">${map[type]||'🔘'}</span>`;
+    }
+
+    // ---------- WS / Refresh ----------
+    async function refreshAll(){ await getStatus(); }
+    function connectWs(){ const b=baseUrl(); if(!b){ toast('Set IP first'); return;} try{ const ws=new WebSocket(b.replace('http','ws')+'/api/ws'); ws.onopen=()=>toast('WS connected'); ws.onmessage=(e)=>{ setOnline(true); toast('WS → '+(e.data||'..')); }; ws.onclose=()=>toast('WS closed'); ws.onerror=()=>toast('WS error'); }catch(e){ toast('WS init error'); } }
+
+    // ---------- Settings helpers ----------
+    function saveSettings(){ const s={ ip: ipInput.value.trim(), token: tokenInput.value.trim(), statusPref: statusPref.value, setPref: setPref.value }; localStorage.setItem(STORAGE, JSON.stringify(s)); }
+    function loadSettings(){ try{ return JSON.parse(localStorage.getItem(STORAGE))||{} }catch{ return {} } }
+    function applySettings(){ ipInput.value=settings.ip||''; tokenInput.value=settings.token||''; if(settings.statusPref) statusPref.value=settings.statusPref; if(settings.setPref) setPref.value=settings.setPref; }
+
+    // Initial
+    refreshAll();
+  })();
   </script></body>
 </html>
