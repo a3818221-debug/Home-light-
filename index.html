@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discover Rishikesh - Yoga Capital of the World</title>
+    <title>प्रकृति और आध्यात्म - ऋषिकेश</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;700&family=Martel:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a5f7a;
-            --secondary: #ffc107;
-            --accent: #d4af37;
-            --light: #f8f9fa;
-            --dark: #1e2a38;
-            --nature-green: #2e8b57;
-            --nature-blue: #1e90ff;
-            --nature-brown: #8b4513;
+            --saffron: #FF9933;
+            --river-blue: #1A5F7A;
+            --forest-green: #2E8B57;
+            --mountain-brown: #8B4513;
+            --sunlight-yellow: #FFD700;
+            --rainbow-purple: #9370DB;
+            --ganga-white: #F5F5F5;
+            --shiv-blue: #1E3A8A;
         }
         
         * {
@@ -25,53 +25,48 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Hind', sans-serif;
+            background: linear-gradient(to bottom, var(--ganga-white), #E0F7FF);
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
         }
         
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
         /* Header Styles */
         header {
-            background: linear-gradient(to right, rgba(26, 95, 122, 0.95), rgba(26, 95, 122, 0.85));
+            background: linear-gradient(to right, var(--river-blue), var(--forest-green));
             color: white;
-            padding: 1rem 0;
+            padding: 15px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        header.scrolled {
-            padding: 0.5rem 0;
-            background: rgba(26, 95, 122, 0.98);
-        }
-        
-        .header-container {
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
         }
         
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
+            font-family: 'Martel', serif;
+            font-size: 28px;
+            font-weight: 900;
             display: flex;
             align-items: center;
         }
         
         .logo i {
             margin-right: 10px;
-            color: var(--secondary);
-            animation: pulse 2s infinite;
+            color: var(--saffron);
         }
         
         .nav-links {
@@ -80,7 +75,7 @@
         }
         
         .nav-links li {
-            margin: 0 1rem;
+            margin: 0 15px;
         }
         
         .nav-links a {
@@ -89,11 +84,11 @@
             font-weight: 500;
             transition: all 0.3s;
             position: relative;
-            padding: 0.5rem 0;
+            padding: 5px 0;
         }
         
         .nav-links a:hover {
-            color: var(--secondary);
+            color: var(--sunlight-yellow);
         }
         
         .nav-links a::after {
@@ -103,7 +98,7 @@
             height: 2px;
             bottom: 0;
             left: 0;
-            background-color: var(--secondary);
+            background-color: var(--sunlight-yellow);
             transition: width 0.3s;
         }
         
@@ -111,122 +106,68 @@
             width: 100%;
         }
         
-        .book-btn {
-            background: var(--secondary);
-            color: var(--dark);
-            border: none;
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
-        }
-        
-        .book-btn:hover {
-            background: #ffb300;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
-        }
-        
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1586122377340-e197c7e3eb96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1586122377340-e197c7e3eb96?ixlib=rb-4.0.3') center/cover no-repeat;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            padding: 0 1rem;
-            position: relative;
-            overflow: hidden;
+            margin-top: 60px;
         }
         
         .hero-content {
-            max-width: 900px;
-            margin-top: 60px;
-            z-index: 1;
-            animation: fadeIn 1.5s ease-out;
+            max-width: 800px;
+            padding: 20px;
         }
         
         .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
-            margin-bottom: 1.5rem;
+            font-family: 'Martel', serif;
+            font-size: 48px;
+            margin-bottom: 20px;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            line-height: 1.2;
         }
         
         .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 20px;
+            margin-bottom: 30px;
         }
         
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .btn {
-            padding: 1.2rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-        }
-        
-        .btn-primary {
-            background: var(--secondary);
-            color: var(--dark);
-            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
-        }
-        
-        .btn-primary:hover {
-            background: #ffb300;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 193, 7, 0.5);
-        }
-        
-        .btn-secondary {
-            background: transparent;
+        .cta-button {
+            display: inline-block;
+            background: var(--saffron);
             color: white;
-            border: 2px solid white;
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 20px;
         }
         
-        .btn-secondary:hover {
-            background: white;
-            color: var(--dark);
+        .cta-button:hover {
+            background: #e0892a;
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
-        /* Features Section */
-        .features {
-            padding: 6rem 2rem;
-            background: linear-gradient(to bottom, #ffffff, #f1f8ff);
+        /* Sections */
+        .section {
+            padding: 80px 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 50px;
         }
         
         .section-title h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
+            font-family: 'Martel', serif;
+            font-size: 36px;
+            color: var(--river-blue);
+            margin-bottom: 15px;
             position: relative;
             display: inline-block;
         }
@@ -235,287 +176,175 @@
             content: '';
             position: absolute;
             width: 80px;
-            height: 4px;
-            background: var(--secondary);
-            bottom: -15px;
+            height: 3px;
+            background: var(--saffron);
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            border-radius: 2px;
         }
         
-        .section-title p {
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-        }
-        
+        /* Features Grid */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 30px;
+            margin-top: 40px;
         }
         
         .feature-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
             text-align: center;
-            padding: 2.5rem 2rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background: linear-gradient(to bottom, var(--primary), #2a7a96);
-            z-index: -1;
-            transition: all 0.4s;
-            opacity: 0;
+            padding: 30px;
         }
         
         .feature-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-            color: white;
-        }
-        
-        .feature-card:hover::before {
-            height: 100%;
-            opacity: 1;
-        }
-        
-        .feature-card:hover h3,
-        .feature-card:hover p,
-        .feature-card:hover .feature-icon {
-            color: white;
         }
         
         .feature-icon {
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            transition: all 0.4s;
+            font-size: 50px;
+            color: var(--river-blue);
+            margin-bottom: 20px;
         }
         
         .feature-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-            transition: all 0.4s;
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--forest-green);
         }
         
-        .feature-card p {
-            color: #666;
-            transition: all 0.4s;
+        /* Nature Elements */
+        .nature-elements {
+            background: linear-gradient(to bottom, var(--forest-green), #3DA56A);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
         }
         
-        /* Testimonials */
-        .testimonials {
-            padding: 6rem 2rem;
-            background: white;
-        }
-        
-        .testimonials-grid {
+        .elements-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 4rem auto 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
         
-        .testimonial-card {
-            background: var(--light);
+        .element-card {
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            position: relative;
+            padding: 25px;
+            backdrop-filter: blur(10px);
             transition: all 0.3s;
         }
         
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        .element-card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
         }
         
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            font-size: 5rem;
-            color: rgba(26, 95, 122, 0.1);
-            font-family: 'Playfair Display', serif;
-            line-height: 1;
+        .element-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--sunlight-yellow);
         }
         
-        .testimonial-text {
-            margin-bottom: 1.5rem;
-            font-style: italic;
-            color: #555;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .author-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: #ddd;
-            margin-right: 1rem;
-            overflow: hidden;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Spiritual Section */
+        .spiritual-section {
+            background: linear-gradient(to right, var(--shiv-blue), #2A4B8A);
             color: white;
-            font-weight: bold;
-            font-size: 1.5rem;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .spiritual-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .spiritual-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
         }
         
         /* Footer */
         footer {
-            background: var(--dark);
+            background: linear-gradient(to right, var(--mountain-brown), #6B3E1E);
             color: white;
-            padding: 5rem 2rem 2rem;
+            padding: 50px 0 20px;
+            text-align: center;
         }
         
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            gap: 30px;
+            margin-bottom: 30px;
         }
         
-        .footer-col h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.8rem;
-        }
-        
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--secondary);
-        }
-        
-        .footer-col p {
-            opacity: 0.8;
-            margin-bottom: 1rem;
-        }
-        
-        .contact-info {
-            list-style: none;
-        }
-        
-        .contact-info li {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-info i {
-            margin-right: 10px;
-            color: var(--secondary);
+        .footer-section h3 {
+            font-family: 'Martel', serif;
+            margin-bottom: 20px;
+            font-size: 22px;
         }
         
         .social-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
         }
         
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             transition: all 0.3s;
-            font-size: 1.2rem;
         }
         
         .social-links a:hover {
-            background: var(--secondary);
-            color: var(--dark);
+            background: var(--saffron);
             transform: translateY(-3px);
         }
         
         .copyright {
-            text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
+            margin-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.7;
-        }
-        
-        /* Animations */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
-            .header-container {
+            .header-content {
                 flex-direction: column;
-                padding: 1rem;
+                text-align: center;
             }
             
             .nav-links {
-                margin-top: 1rem;
+                margin-top: 20px;
                 flex-wrap: wrap;
                 justify-content: center;
             }
             
             .nav-links li {
-                margin: 0.5rem;
+                margin: 10px;
             }
             
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 36px;
             }
             
             .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .hero-btns {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.5rem;
+                font-size: 18px;
             }
         }
     </style>
@@ -523,182 +352,169 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="header-container">
+        <div class="container header-content">
             <div class="logo">
                 <i class="fas fa-om"></i>
-                Rishikesh Spiritual Journeys
+                प्रकृति और आध्यात्म
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about-shiv.html">About Shiv</a></li>
-                <li><a href="hotel-services.html">Hotel & Booking</a></li>
+                <li><a href="#">होम</a></li>
+                <li><a href="#">शिव</a></li>
+                <li><a href="#">ऋषिकेश</a></li>
+                <li><a href="#">गंगा</a></li>
+                <li><a href="#">संपर्क</a></li>
             </ul>
-            <button class="book-btn">Book Now</button>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Welcome to Rishikesh</h1>
-            <p>The Yoga Capital of the World and Gateway to the Himalayas</p>
-            <div class="hero-btns">
-                <a href="about-shiv.html" class="btn btn-primary">Explore Spirituality</a>
-                <a href="hotel-services.html" class="btn btn-secondary">Plan Your Stay</a>
-            </div>
+            <h1>ऋषिकेश: प्रकृति और आध्यात्म का संगम</h1>
+            <p>जहाँ हिमालय की गोद में बसी गंगा की पवित्र धारा आत्मा को शुद्ध करती है</p>
+            <a href="#" class="cta-button">अनुभव करें</a>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features">
-        <div class="section-title">
-            <h2>Why Visit Rishikesh?</h2>
-            <p>Discover the many experiences that make Rishikesh a unique destination</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-spa"></i>
-                </div>
-                <h3>Yoga & Meditation</h3>
-                <p>Find inner peace in the world capital of yoga with expert guides and serene ashrams.</p>
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>ऋषिकेश के दर्शनीय स्थल</h2>
+                <p>प्रकृति और आध्यात्म का अद्भुत संयोजन</p>
             </div>
             
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-water"></i>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>गंगा आरती</h3>
+                    <p>त्रिवेणी घाट पर होने वाली भव्य गंगा आरती का दिव्य अनुभव</p>
                 </div>
-                <h3>Ganga Aarti</h3>
-                <p>Experience the divine evening ceremony on the banks of the sacred Ganges River.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-hiking"></i>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>निलकंठ महादेव</h3>
+                    <p>समुद्र तल से 1300 मीटर की ऊंचाई पर स्थित भगवान शिव का मंदिर</p>
                 </div>
-                <h3>Adventure Sports</h3>
-                <p>From rafting to bungee jumping, get your adrenaline pumping with exciting activities.</p>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <h3>आश्रम और ध्यान केंद्र</h3>
+                    <p>शांति और आत्मिक उन्नति के लिए विश्व प्रसिद्ध आश्रम</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <div class="section-title">
-            <h2>Visitor Experiences</h2>
-            <p>What travelers say about their Rishikesh journey</p>
+    <!-- Nature Elements Section -->
+    <section class="nature-elements">
+        <div class="container">
+            <div class="section-title">
+                <h2>प्रकृति के रंग</h2>
+                <p>ऋषिकेश की प्राकृतिक सुंदरता</p>
+            </div>
+            
+            <div class="elements-grid">
+                <div class="element-card">
+                    <div class="element-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>सूर्य की किरणें</h3>
+                    <p>गंगा पर पड़ती सुनहरी सूरज की किरणें</p>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-icon">
+                        <i class="fas fa-rainbow"></i>
+                    </div>
+                    <h3>इंद्रधनुष</h3>
+                    <p>वर्षा के बाद आकाश में बनता रंगबिरंगा इंद्रधनुष</p>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>गंगा की धारा</h3>
+                    <p>हिमालय से आती शुद्ध और निर्मल जलधारा</p>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3>हरियाली</h3>
+                    <p>चारों ओर फैला हरा-भरा प्राकृतिक वातावरण</p>
+                </div>
+            </div>
         </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-text">My stay in Rishikesh was transformative. The morning yoga sessions with the Ganges view were incredible. The spiritual energy here is palpable!</p>
-                <div class="testimonial-author">
-                    <div class="author-img">S</div>
-                    <div>
-                        <h4>Sarah Johnson</h4>
-                        <p>From USA</p>
-                    </div>
-                </div>
+    </section>
+
+    <!-- Spiritual Section -->
+    <section class="spiritual-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>शिव और गंगा</h2>
+                <p>अटूट संबंध</p>
             </div>
             
-            <div class="testimonial-card">
-                <p class="testimonial-text">The perfect blend of adventure and spirituality! The rafting experience was thrilling, and the evening Ganga Aarti was deeply moving.</p>
-                <div class="testimonial-author">
-                    <div class="author-img">D</div>
-                    <div>
-                        <h4>David Miller</h4>
-                        <p>From UK</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <p class="testimonial-text">I extended my stay twice! The energy here is magical. Met amazing people, and the bonfire nights with music were unforgettable.</p>
-                <div class="testimonial-author">
-                    <div class="author-img">P</div>
-                    <div>
-                        <h4>Priya Patel</h4>
-                        <p>From India</p>
-                    </div>
-                </div>
+            <div class="spiritual-content">
+                <p>भगवान शिव और गंगा का संबंध अत्यंत गहरा और पवित्र है। पौराणिक कथाओं के अनुसार, गंगा को स्वर्ग से धरती पर लाने का श्रेय भगवान शिव को जाता है। उन्होंने गंगा की तेज धारा को अपनी जटाओं में समेटकर धरती पर उतारा, जिससे पृथ्वी गंगा के वेग से सुरक्षित रही।</p>
+                
+                <p>ऋषिकेश में गंगा का विशेष महत्व है क्योंकि यहाँ गंगा का प्रवाह अत्यंत शुद्ध और पवित्र माना जाता है। शिव और गंगा का यह अटूट संबंध ऋषिकेश की आध्यात्मिकता को और भी गहरा बनाता है।</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-col">
-                <h3>Rishikesh Spiritual Journeys</h3>
-                <p>Your gateway to spiritual awakening and adventure in the foothills of the Himalayas.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>हमारे बारे में</h3>
+                    <p>ऋषिकेश की प्राकृतिक सुंदरता और आध्यात्मिक महत्व को समर्पित</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>संपर्क करें</h3>
+                    <p>Email: info@rishikesh.com</p>
+                    <p>Phone: +91 9639432774</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>फॉलो करें</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
             
-            <div class="footer-col">
-                <h3>Contact Information</h3>
-                <ul class="contact-info">
-                    <li><i class="fas fa-map-marker-alt"></i> Near Laxman Jhula, Rishikesh, Uttarakhand</li>
-                    <li><i class="fas fa-phone"></i> +91 9639432774</li>
-                    <li><i class="fas fa-envelope"></i> info@rishikeshjourneys.com</li>
-                </ul>
+            <div class="copyright">
+                <p>© 2023 ऋषिकेश - प्रकृति और आध्यात्म. सभी अधिकार सुरक्षित</p>
             </div>
-            
-            <div class="footer-col">
-                <h3>Quick Links</h3>
-                <ul class="contact-info">
-                    <li><a href="index.html"><i class="fas fa-angle-right"></i> Home</a></li>
-                    <li><a href="about-shiv.html"><i class="fas fa-angle-right"></i> About Shiv</a></li>
-                    <li><a href="hotel-services.html"><i class="fas fa-angle-right"></i> Hotel & Booking</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>&copy; 2023 Rishikesh Spiritual Journeys. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Header scroll effect
-            window.addEventListener('scroll', function() {
-                const header = document.querySelector('header');
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-            
-            // Animate elements on scroll
-            const animateOnScroll = function() {
-                const elements = document.querySelectorAll('.feature-card, .testimonial-card');
-                
-                elements.forEach(element => {
-                    const position = element.getBoundingClientRect();
-                    
-                    // If element is in viewport
-                    if(position.top < window.innerHeight - 100) {
-                        element.style.opacity = 1;
-                        element.style.transform = 'translateY(0)';
-                    }
-                });
-            };
-            
-            // Initially set opacity to 0 for animated elements
-            document.querySelectorAll('.feature-card, .testimonial-card').forEach(element => {
-                element.style.opacity = 0;
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            });
-            
-            // Run on scroll and initially
-            window.addEventListener('scroll', animateOnScroll);
-            animateOnScroll();
+        // Simple JavaScript for header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = "linear-gradient(to right, var(--river-blue), var(--forest-green))";
+                header.style.padding = "10px 0";
+            } else {
+                header.style.background = "linear-gradient(to right, var(--river-blue), var(--forest-green))";
+                header.style.padding = "15px 0";
+            }
         });
     </script>
 </body>
